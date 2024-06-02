@@ -1,58 +1,68 @@
-# setup prometheus (kube-prometheus-stack) on k8s
+# 🚀 Setup Prometheus (kube-prometheus-stack) on Kubernetes
 
-easily setup prometheus(kube-prometheus-stack) on kubernetes and set prometheus, grafana and alertmanager config.
+Easily set up Prometheus (kube-prometheus-stack) on Kubernetes and configure Prometheus, Grafana, and Alertmanager.
 
-# Manual process
+# 🔧 Manual Process
 
-## add repo 
+## 📥 Add Helm Repo 
 
 ```bash
-
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
-
 helm repo update
 ```
 
-## create namespace 
-
+## 🏷️ Create Namespace
 ```bash
 kubectl create namespace monitoring
 ```
 
-## add grafana secrets (alert credentials mail, slack ....)
-
+## 🔑 Add Grafana Secrets (Alert Credentials: Email, Slack, etc.)
 ```bash
 kubectl apply -f grafana-secret.yml
 ```
 
-### base64 generate 
+### 🔐 Base64 Generate
 
 ```bash
 echo -n 'the_data' | base64
 ```
 
-## config 
-you can modify config data inside `config folder`
+## 🛠️ Configuration
+You can modify the config data inside the config folder.
 
-## install prometheus
 
-```bash
-helm install prometheus prometheus-community/kube-prometheus-stack -n monitoring -f config/grafana.yml -f config/prometheus.yml -f config/alert-manager.yml
-```
 
-## upgrade
 
-```bash
-helm upgrade prometheus prometheus-community/kube-prometheus-stack -n monitoring -f config/grafana.yml -f config/prometheus.yml -f config/alert-manager.yml
-```
-
-## uninstall
 
 ```bash
 helm uninstall prometheus -n monitoring
 ```
 
-# automate with bash script
+# Automate Process with bash script
+
+```bash
+./setup-prometheus.sh
+```
+
+## 📈 Install Prometheus
+
+```bash
+helm install prometheus prometheus-community/kube-prometheus-stack -n monitoring -f config/grafana.yml -f config/prometheus.yml -f config/alert-manager.yml
+```
+
+## ⬆️ Upgrade
+
+```bash
+helm upgrade prometheus prometheus-community/kube-prometheus-stack -n monitoring -f config/grafana.yml -f config/prometheus.yml -f config/alert-manager.yml
+```
+
+## ❌ Uninstall
+
+```bash
+helm uninstall prometheus -n monitoring
+```
+
+# 🤖 Automate Process with Bash Script
 
 ```bash
 ./setup-prometheus.sh
