@@ -1,14 +1,20 @@
+# https://github.com/grafana/helm-charts/blob/main/charts/grafana/values.yaml
 grafana:
+  # admin credentials
+  adminUser: "admin"
+  adminPassword: "admin@123"
+  
   smtp:
     enabled: true
-    existingSecret: "grafana-smtp-secret"
+    existingSecret: "grafana-secret"
     passwordKey: "smtp_password"
     userKey: "smtp_username"
 
   grafana.ini:
+    # smtp setup
     smtp:
       enabled: true
-      existingSecret: "grafana-smtp-secret"
+      existingSecret: "grafana-secret"
       passwordKey: "smtp_password"
       userKey: "smtp_username"
       host: sandbox.smtp.mailtrap.io:587
