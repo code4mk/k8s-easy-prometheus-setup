@@ -14,9 +14,6 @@ grafana:
     # smtp setup
     smtp:
       enabled: true
-      existingSecret: "grafana-secret"
-      passwordKey: "smtp_password"
-      userKey: "smtp_username"
       host: sandbox.smtp.mailtrap.io:587
       from_address: alerts@example.com
 
