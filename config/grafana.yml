@@ -5,7 +5,7 @@ grafana:
   adminPassword: "admin@123"
   
   smtp:
-    enabled: true
+    enabled: false
     existingSecret: "grafana-secret"
     passwordKey: "smtp_password"
     userKey: "smtp_username"
@@ -13,7 +13,8 @@ grafana:
   grafana.ini:
     # smtp setup
     smtp:
-      enabled: true
+      enabled: false
+      # set your own SMTP hostname
       host: sandbox.smtp.mailtrap.io:587
       from_address: alerts@example.com
 
